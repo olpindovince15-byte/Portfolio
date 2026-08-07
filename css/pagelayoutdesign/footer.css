@@ -1,0 +1,54 @@
+/* Footer with Right-to-Left Text Slide Animation */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f1419 0%, #1a202c 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Continuous slide animation: right to left */
+@keyframes slideTextRightToLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+footer {
+  background: rgba(15, 20, 25, 0.95);
+  border-top: 2px solid #d97706;
+  padding: 2rem;
+  margin-top: auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+footer p {
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  margin: 0;
+  white-space: nowrap;
+  display: inline-block;
+  animation: slideTextRightToLeft 20s linear infinite;
+}
+
+/* Span for accent text */
+footer p span {
+  color: #d97706;
+  font-weight: 700;
+}

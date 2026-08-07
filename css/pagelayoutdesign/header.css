@@ -1,0 +1,416 @@
+/* ===================================
+   GLOBAL STYLES
+   =================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f1419 0%, #1a202c 100%);
+  color: #e5e7eb;
+  overflow-x: hidden;
+}
+
+/* ===================================
+   HEADER
+   =================================== */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 3rem;
+  background: rgba(15, 20, 25, 0.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(217, 119, 6, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+header.scroll-active {
+  padding: 0.8rem 3rem;
+  border-bottom-color: rgba(217, 119, 6, 0.4);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- Compact Logo ---- */
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: translateY(-2px);
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.logo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d97706, #2563eb);
+  opacity: 0.15;
+  transition: opacity 0.3s ease;
+}
+
+.logo-container:hover .logo::before {
+  opacity: 0.25;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  border: 1.5px solid #d97706;
+  transition: all 0.3s ease;
+}
+
+.logo-container:hover .logo::after {
+  border-color: #f59e0b;
+  box-shadow: inset 0 0 12px rgba(217, 119, 6, 0.3);
+}
+
+.logo .v {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #e5e7eb;
+  letter-spacing: -0.05em;
+  position: relative;
+  z-index: 2;
+}
+
+.logo .o {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #d97706;
+  margin-left: -0.35ch;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- Brand Name ---- */
+
+h1 {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  gap: 0.1rem;
+  font-size: 0;
+}
+
+h1 .white,
+h1 .blue {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+}
+
+h1 .white {
+  color: #e5e7eb;
+}
+
+h1 .blue {
+  color: #d97706;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.line::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: linear-gradient(90deg, #d97706, transparent);
+  border-radius: 1px;
+}
+
+.portfolio-title {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: #6b7280;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.logo-container:hover .portfolio-title {
+  color: #d97706;
+}
+
+/* ---- Navigation ---- */
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+nav a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  position: relative;
+  padding: 0.4rem 0;
+  transition: color 0.3s ease;
+}
+
+nav a::before {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #d97706, #f59e0b);
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+nav a:hover {
+  color: #f3f4f6;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+/* ---- Mobile Menu Toggle ---- */
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  justify-content: center;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 2px;
+  background: #d97706;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 900px) {
+  header {
+    padding: 1rem 2rem;
+  }
+
+  header.scroll-active {
+    padding: 0.7rem 2rem;
+  }
+
+  .logo-container {
+    gap: 0.7rem;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .logo .v {
+    font-size: 1.2rem;
+  }
+
+  .logo .o {
+    font-size: 1.1rem;
+  }
+
+  h1 .white,
+  h1 .blue {
+    font-size: 0.95rem;
+  }
+
+  nav {
+    gap: 2rem;
+  }
+
+  nav a {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 700px) {
+  header {
+    padding: 0.9rem 1.5rem;
+  }
+
+  .logo-container {
+    gap: 0.5rem;
+  }
+
+  .logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+  }
+
+  .logo .v {
+    font-size: 1rem;
+  }
+
+  .logo .o {
+    font-size: 0.95rem;
+    margin-left: -0.3ch;
+  }
+
+  h1 .white,
+  h1 .blue {
+    font-size: 0.82rem;
+  }
+
+  .line::before {
+    width: 12px;
+  }
+
+  .portfolio-title {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(15, 20, 25, 0.98);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(217, 119, 6, 0.2);
+    padding: 1rem 1.5rem;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(217, 119, 6, 0.1);
+    font-size: 0.85rem;
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 0.8rem 1rem;
+  }
+
+  header.scroll-active {
+    padding: 0.6rem 1rem;
+  }
+
+  .logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+
+  .logo .v {
+    font-size: 0.9rem;
+  }
+
+  .logo .o {
+    font-size: 0.85rem;
+  }
+
+  h1 .white,
+  h1 .blue {
+    font-size: 0.75rem;
+  }
+
+  .line {
+    gap: 0.4rem;
+    margin-top: 0.1rem;
+  }
+
+  .line::before {
+    width: 10px;
+  }
+
+  .portfolio-title {
+    font-size: 0.5rem;
+  }
+}

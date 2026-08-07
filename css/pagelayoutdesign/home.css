@@ -1,0 +1,131 @@
+        /* Hero Section */
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+
+/* Layout */
+.hero-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+/* Left Side */
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h3 {
+    color: #2563eb;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.hero-text h1 {
+    font-size: 60px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.hero-text h2 {
+    color: #60a5fa;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    color: #cbd5e1;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    max-width: 550px;
+}
+
+/* Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    background: #2563eb;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid #2563eb;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-4px);
+}
+
+.btn.outline {
+    background: transparent;
+    color: #2563eb;
+}
+
+.btn.outline:hover {
+    background: #2563eb;
+    color: white;
+}
+
+/* Right Side */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #2563eb;
+    box-shadow: 0 0 35px rgba(37,99,235,.5);
+    transition: .4s;
+}
+
+.hero-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-text p {
+        margin: auto;
+        margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image img {
+        width: 280px;
+        height: 280px;
+    }
+
+    .hero-text h1 {
+        font-size: 42px;
+    }
+
+    .hero-text h2 {
+        font-size: 24px;
+    }
+}
