@@ -1,0 +1,16 @@
+@import url("../css/pagelayoutdesign/herosection.css");
+@import url("../css/pagelayoutdesign/header.css");
+@import url("../css/pagelayoutdesign/footer.css");
+@import url("../css/pagelayoutdesign/programming-language-icons.css");
+@import url("../css/pagelayoutdesign/cotancts.css");
+@import url("../css/pagelayoutdesign/about.css");
+@import url("../css/pagelayoutdesign/project.css");
+
+/* Global styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
