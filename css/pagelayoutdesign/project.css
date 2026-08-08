@@ -1,30 +1,218 @@
+/* ===================================
+   PROJECTS SECTION
+   Matches HERO + CONTACT — Two-Color Rotating Ring
+   Orange & Blue Theme
+   No #projects background set here on purpose — it
+   inherits the body's dark gradient, same as .contact.
+   =================================== */
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#projects {
+  width: 100%;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+  font-family:
+    "Segoe UI",
+    Roboto,
+    -apple-system,
+    sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title h2 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
+  line-height: 1.15;
+  text-shadow: 0 4px 20px rgba(249, 115, 22, 0.2);
+  animation: fadeInDown 0.8s ease-out backwards;
+}
+
+.section-title p {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-weight: 700;
+  background: linear-gradient(90deg, #f97316 0%, #fb923c 50%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 auto;
+  max-width: 620px;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease-out 0.1s backwards;
+}
+
 .projects-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .project-card {
-  background: #fff;
-  border-radius: 15px;
+  --accent: #f97316;
+  --accent-soft: #fb923c;
+  --glow: rgba(249, 115, 22, 0.35);
+
+  background: linear-gradient(
+    145deg,
+    rgba(20, 26, 46, 0.9) 0%,
+    rgba(10, 14, 39, 0.75) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  animation: fadeInUp 0.8s ease-out backwards;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 0.4s ease;
+}
+
+.project-card:nth-child(1) {
+  --accent: #f97316;
+  --accent-soft: #fb923c;
+  --glow: rgba(249, 115, 22, 0.35);
+  animation-delay: 0.15s;
+}
+
+.project-card:nth-child(2) {
+  --accent: #2563eb;
+  --accent-soft: #38bdf8;
+  --glow: rgba(37, 99, 235, 0.35);
+  animation-delay: 0.28s;
+}
+
+.project-card:nth-child(3) {
+  --accent: #f97316;
+  --accent-soft: #2563eb;
+  --glow: rgba(37, 99, 235, 0.3);
+  animation-delay: 0.4s;
 }
 
 .project-card:hover {
   transform: translateY(-10px);
+  border-color: var(--glow);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px var(--glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* shine sweep — same pattern as .btn / .contact-card */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.06),
+    transparent
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.project-card:hover::before {
+  left: 100%;
 }
 
 .project-card img {
   width: 100%;
   height: 220px;
   object-fit: cover;
+  display: block;
+  filter: brightness(0.85) saturate(1.05);
+  transition:
+    filter 0.4s ease,
+    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.project-card:hover img {
+  filter: brightness(1) saturate(1.15);
+  transform: scale(1.04);
+}
+
+/* thin two-color rule under the image, echoes the ring's split */
+.project-card::after {
+  content: "";
+  position: absolute;
+  top: 220px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    var(--accent) 50%,
+    var(--accent-soft) 50%,
+    var(--accent-soft) 100%
+  );
+  z-index: 2;
 }
 
 .project-content {
-  padding: 20px;
-  color: #0f172a;
+  padding: 24px 20px 20px;
+  color: #e5e7eb;
+  position: relative;
+  z-index: 1;
+}
+
+.project-content h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem 0;
+}
+
+.project-content p {
+  font-size: 0.92rem;
+  color: #d1d5db;
+  line-height: 1.7;
+  margin: 0;
 }
 
 .tech-stack {
@@ -35,28 +223,58 @@
 }
 
 .tech-stack span {
-  background: #f2f2f2;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #d1d5db;
   padding: 6px 12px;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.project-card:hover .tech-stack span {
+  border-color: var(--glow);
+  color: #ffffff;
 }
 
 .buttons {
   display: flex;
   gap: 10px;
+  margin-top: 4px;
 }
 
 .buttons a {
   text-decoration: none;
-  padding: 10px 16px;
+  padding: 10px 18px;
   border-radius: 8px;
-  background: #0f172a;
-  color: #fff;
-  transition: 0.3s;
+  background: linear-gradient(
+    135deg,
+    var(--accent) 0%,
+    var(--accent-soft) 100%
+  );
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 6px 20px var(--glow);
+  transition:
+    transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.3s ease;
 }
 
 .buttons a:hover {
-  background: #2563eb;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px var(--glow);
+}
+
+.buttons a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
 }
 
 @media (max-width: 992px) {
@@ -68,5 +286,58 @@
 @media (max-width: 768px) {
   .projects-container {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  #projects {
+    padding: 3.5rem 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-title h2,
+  .section-title p,
+  .project-card,
+  .project-card img,
+  .buttons a {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .project-card:hover,
+  .project-card:hover img,
+  .buttons a:hover {
+    transform: none;
+  }
+}
+
+@media print {
+  .project-card {
+    background: white;
+    border: 2px solid #333;
+    box-shadow: none;
+  }
+
+  .project-card::before,
+  .project-card::after {
+    display: none;
+  }
+
+  .section-title h2,
+  .project-content h3,
+  .project-content p {
+    color: black;
+  }
+
+  .section-title p {
+    color: black;
+    -webkit-text-fill-color: black;
+  }
+
+  .buttons a {
+    background: white;
+    color: black;
+    border: 1px solid #333;
+    box-shadow: none;
   }
 }
