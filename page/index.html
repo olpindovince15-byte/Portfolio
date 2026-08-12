@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/logo.png" type="image/x-icon">
   <title>My Portfolio</title>
   <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/script.js"></script>
 
 </head>
 
@@ -17,7 +19,6 @@
         <span class="v">V</span>
         <span class="o">O</span>
       </div>
-
       <h1>
         <span class="white">VINCENT</span>
         <span class="blue">OLPINDO</span>
@@ -25,21 +26,16 @@
       <div class="line">
         <div class="portfolio-title">PORTFOLIO</div>
       </div>
-
     </div>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#" onclick="scrollToHome(event)">Home</a>
+      <a href="#" onclick="scrollToAbout(event)">About</a>
+      <a href="#" onclick="scrollToContact(event)">Contact</a>
     </nav>
+    <!-- script -->
+    <script src="../js/header_url.js"></script>
   </header>
 
-  <hr>
-
-
-
-
-  </section>
   <hr class="section-divider">
 
   <!-- home -->
@@ -57,17 +53,17 @@
         I build responsive websites and modern web applications
         using React, JavaScript, and other technologies.
       </p>
+      <a href="#" class="btn" onclick="scrollToProjects(event)">View Projects</a>
+      <a href="#" class="btn outline" onclick="scrollToContact(event)">Contact Me</a>
+      <!-- script -->
+      <script src="../js/herosection_url.js"></script>
 
-      <a href="#projects" class="btn">View Projects</a>
-      <a href="#contact" class="btn outline">Contact Me</a>
     </div>
-
-
   </section>
 
-  <hr>
-  <!-- hero section with image card of programming language -->
+  <hr class="section-divider">
 
+  <!-- hero section with image card of programming language -->
   <section class="programming-language-icons" id="programming-language-icons">
     <div class="section-header">
       <h2>Programming Languages</h2>
@@ -132,7 +128,6 @@
           <img src="../img/laravel.png" alt="Laravel logo" class="skill-card__image">
           <h3 class="skill-card__title">Laravel</h3>
         </article>
-
       </div>
 
       <!-- Right Navigation Button -->
@@ -140,12 +135,11 @@
         &#8250;
       </button>
 
-      <script src="../js/caurosel.js"></script>
 
     </div>
-
+    <script src="../js/caurosel.js"></script>
   </section>
-
+  <hr class="section-divider">
 
   <!-- about me -->
   <section id="about">
@@ -201,7 +195,7 @@
 
           <div class="buttons">
             <a href="http://localhost:8080/PROTFOLIO/page/index.html">Live Demo</a>
-            <a href="#">GitHub</a>
+            <a href="https://github.com/olpindovince15-byte/Portfolio.git">GitHub</a>
           </div>
         </div>
       </div>
@@ -247,7 +241,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -290,14 +283,8 @@
           </div>
 
         </div>
-
-
-
-
       </div>
-
     </div>
-
   </section>
 
 
