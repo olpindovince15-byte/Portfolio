@@ -1,16 +1,4 @@
-/* ===================================
-   CONTACT SECTION
-   Matches HERO — Two-Color Rotating Ring
-   Orange & Blue Theme
-   Drop this after hero.css. No .contact background
-   is set here on purpose — it inherits the body's
-   dark gradient so the two sections read as one page.
-   =================================== */
-
-/* ===================================
-   SHARED KEYFRAMES (safe to duplicate if hero.css
-   already defines these — identical, so no conflict)
-   =================================== */
+/* contact css */
 
 @keyframes floatOrange {
   0%,
@@ -54,9 +42,7 @@
   }
 }
 
-/* ===================================
-   SECTION CONTAINER + AMBIENT ORBS
-   =================================== */
+/* SECTION CONTAINER + AMBIENT ORBS */
 
 .contact {
   width: 100%;
